@@ -5,7 +5,6 @@ public class Fraction {
     // Fields
     private int numerator;
     private int denominator;
-    private double line;
 
     // Constructor
     public Fraction(int numerator, int denominator) {
