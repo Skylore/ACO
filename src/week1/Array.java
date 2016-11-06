@@ -2,6 +2,16 @@ package week1;
 
 public class Array {
 
+    public static void main(String[] args) {
+
+        int[] mas = {1,23,4,5,6,7};
+        Array array = new Array(mas);
+
+        int[] mas1 = {1,3,4,5,6,7};
+        boolean compare = array.compare(mas1);
+        System.out.println(compare);
+    }
+
     // Fields
     private int[] array;
     private int range;
@@ -96,21 +106,16 @@ public class Array {
     }
 
     public boolean compare(int[] mas) {
-        int counter = 0;
 
-        if (mas.length == this.array.length) {
+        if (mas.length == this.length) {
             for (int i = 0; i < mas.length; i++) {
-                if (mas[i] == this.array[i]) {
-                    counter++;
+                if (this.array[i] != mas[i]) {
+                    return false;
                 }
             }
         }
 
-        if (counter == mas.length) {
-            return true;
-        }
-
-        return false;
+        return true;
     }
 
     // Getters
