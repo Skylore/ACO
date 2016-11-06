@@ -103,6 +103,8 @@ public class Array {
                     return false;
                 }
             }
+        } else if (mas.length != this.array.length) {
+            return false;
         }
 
         return true;
