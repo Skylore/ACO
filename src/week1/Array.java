@@ -2,16 +2,6 @@ package week1;
 
 public class Array {
 
-    public static void main(String[] args) {
-
-        int[] mas = {1,23,4,5,6,7};
-        Array array = new Array(mas);
-
-        int[] mas1 = {1,3,4,5,6,7};
-        boolean compare = array.compare(mas1);
-        System.out.println(compare);
-    }
-
     // Fields
     private int[] array;
     private int range;
