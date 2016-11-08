@@ -8,7 +8,7 @@ public class Array {
     private int length;
 
 
-    // Constructor
+    // Constructors
     public Array(int[] nums) {
         this.array = nums;
     }
@@ -95,14 +95,16 @@ public class Array {
         return new Array(this.array);
     }
 
-    public boolean compare(int[] mas) {
+    public boolean compare(Array other) {
 
-        if (mas.length == this.length) {
-            for (int i = 0; i < mas.length; i++) {
-                if (this.array[i] != mas[i]) {
+        if (other.array.length == this.array.length) {
+            for (int i = 0; i < other.array.length; i++) {
+                if (this.array[i] != other.array[i]) {
                     return false;
                 }
             }
+        } else if (other.array.length != this.array.length) {
+            return false;
         }
 
         return true;

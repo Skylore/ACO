@@ -51,9 +51,11 @@ public class Fraction {
                 this.denominator * fraction.numerator);
     }
 
-    public Fraction toLine() {
+    public double toLine() {
 
-        return  new Fraction(this.numerator / this.denominator, 0);
+        double res = ((double) this.numerator) / ((double) this.denominator);
+
+        return res;
     }
 
     public void print() {
@@ -61,13 +63,13 @@ public class Fraction {
         System.out.println(this.numerator + "\n--\n" + this.denominator);
     }
 
-    public Fraction isBigger(Fraction fraction) {
+    public void compare(Fraction fraction) {
 
         int cheqThisNum = this.numerator * fraction.denominator;
         int cheqFracNum =  fraction.numerator * this.denominator;
 
-        return cheqThisNum > cheqFracNum ? new Fraction(this.numerator, this.denominator) :
-                new Fraction(fraction.numerator, fraction.denominator);
+        System.out.println(cheqThisNum > cheqFracNum ? this.numerator + "\n-- -> Bigger\n" + this.denominator :
+                fraction.numerator + "\n-- -> Bigger\n" + fraction.denominator);
     }
 
     // Getters
