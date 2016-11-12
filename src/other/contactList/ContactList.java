@@ -1,47 +1,52 @@
 package other.contactList;
 
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class ContactList {
 
-    private Contact[] contacts = {};
+    private Contact[] contacts = new Contact[1];
 
-    public Contact[] addContact() {
-        Contact contact = new Contact();
-        System.out.println("Input name of contact: ");
-        contact.name = new Scanner(System.in).nextLine();
-        System.out.println("Input phone number: ");
-        contact.phone = new Scanner(System.in).nextLine();
+    public Contact[] addContact(Contact contact) {
 
-        contact.id = this.contacts.length + 1;
+        contact.id = 0;
 
-        Contact[] res = Arrays.copyOf(this.contacts, this.contacts.length + 1);
+        Contact[] res = new Contact[this.contacts.length];
+
+        if (this.contacts[this.contacts.length - 1] != null) {
+            res = Arrays.copyOf(this.contacts, this.contacts.length * 2);
+        }
+
         res[res.length - 1] = contact;
+        contact.id ++;
+
+        // TODO remove this sout  (test of array's length)
+        System.out.println(this.contacts.length);
 
         return this.contacts = res;
     }
 
-    public void showDetails() {
-        System.out.println("Input id of contact");
-        int index = new Scanner(System.in).nextInt();
+    public String showDetails(int index) {
 
-        if (this.contacts.length < index + 1 || index < 0) {
-            System.out.println("That contact does'n exist");
+        if (this.contacts.length < index - 1 || index < 0) {
+            return "That contact does'n exist";
         }
-
-        System.out.printf("name - %s \nphone number - %s\nid - %d",
+        return String.format("name - %s \nphone number - %s\nid - %d",
                 this.contacts[index - 1].name, this.contacts[index - 1].phone, this.contacts[index - 1].id);
     }
 
-    public void showAll() {
+    public String showAll() {
+
         if (this.contacts.length == 0) {
             System.out.println("Contact list is empty");
         }
 
+        String res = "";
+
         for (int i = 0; i < this.contacts.length; i++) {
-            System.out.println(this.contacts[i].name);
+            res += this.contacts[i].name + "\n";
         }
+
+        return res;
     }
 
     private String contactToJson(Contact contact) {
@@ -54,7 +59,7 @@ public class ContactList {
                 contact.name, contact.phone, contact.id);
     }
 
-    public void toJson() {
+    public String toJson() {
 
         String res = "{\n \"contactList\" : [\n";
 
@@ -62,6 +67,6 @@ public class ContactList {
             res += contactToJson(this.contacts[i]) + ",\n";
         }
 
-        System.out.println(res.substring(0, res.length() - 2) + "\n]\n}");
+        return res.substring(0, res.length() - 2) + "\n]\n}";
     }
 }

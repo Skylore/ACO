@@ -12,19 +12,31 @@ public class Menu {
             int choose = new Scanner(System.in).nextInt();
 
             if (choose == 1) {
-                list.addContact();
-                System.out.println();
+
+                Contact contact = new Contact();
+                System.out.println("Input name of contact: ");
+                contact.name = new Scanner(System.in).nextLine();
+                System.out.println("Input phone number: ");
+                contact.phone = new Scanner(System.in).nextLine();
+
+                list.addContact(contact);
+
             } else if (choose == 2) {
-                list.showAll();
-                System.out.println();
+                System.out.println(list.showAll());
+
             } else if (choose == 3) {
-                list.showDetails();
-                System.out.println();
+
+                System.out.println("Input id of contact");
+                int index = new Scanner(System.in).nextInt();
+
+                System.out.println(list.showDetails(index));
+
             } else if (choose == 4) {
-                list.toJson();
-                System.out.println();
+                System.out.println(list.toJson() + "\n");
+
             } else if (choose == 5) {
                 break;
+
             } else {
                 System.out.println("Invalid value");
             }
