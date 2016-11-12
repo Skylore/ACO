@@ -19,9 +19,6 @@ public class ContactList {
         res[res.length - 1] = contact;
         contact.id ++;
 
-        // TODO remove this sout  (test of array's length)
-        System.out.println(this.contacts.length);
-
         return this.contacts = res;
     }
 
