@@ -2,15 +2,6 @@ package week1;
 
 public class Line {
 
-    //TODO remove
-    public static void main(String[] args) {
-
-        Line ln = new Line("t  v");
-
-        System.out.println(ln.split().getLine());
-
-    }
-
     //Fields
     private String line;
     private char[] chars;
