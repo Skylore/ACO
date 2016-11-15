@@ -12,6 +12,7 @@ public class Menu {
             int choose = new Scanner(System.in).nextInt();
 
             if (choose == 1) {
+
                 Contact contact = new Contact();
                 System.out.println("Input name of contact: ");
                 contact.name = new Scanner(System.in).nextLine();
@@ -22,15 +23,19 @@ public class Menu {
 
                 list.addContact(contact);
             } else if (choose == 2) {
+
                 System.out.println(list.showAll());
             } else if (choose == 3) {
+
                 System.out.println("Input id of contact");
                 int index = new Scanner(System.in).nextInt();
 
                 System.out.println(list.showDetails(index));
             } else if (choose == 4) {
+
                 System.out.println(list.toJson() + "\n");
             } else if (choose == 5) {
+
                 Scanner scanner = new Scanner(System.in);
 
                 System.out.println("Input index of contact what would you like to override");
@@ -41,8 +46,14 @@ public class Menu {
                 String phone = scanner.next();
                 list.overrideContact(index, name, phone);
             } else if (choose == 6) {
+
+                System.out.println("Input id of contact which you would to remove: ");
+                list.removeContact(new Scanner(System.in).nextInt());
+            } else if (choose == 6) {
+
                 break;
             } else {
+
                 System.out.println("Invalid value");
             }
         }
@@ -55,6 +66,7 @@ public class Menu {
                 "if you would to show details - input 3\n" +
                 "if you would to show json version - input 4\n" +
                 "if you would to override contact, input 5\n" +
-                "if you to exit - input 6");
+                "if you would to remove contact, input 6\n" +
+                "if you to exit - input 7");
     }
 }

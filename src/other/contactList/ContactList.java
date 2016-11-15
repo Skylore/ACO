@@ -63,6 +63,31 @@ public class ContactList {
         this.contacts[index - 1].phone = phone;
     }
 
+    public void removeContact(int index) {
+
+        if (this.contacts.length <= index || this.contacts[index] == null || index < 0) {
+            return;
+        }
+
+        this.contacts[index - 1] = null;
+        int j = 0;
+
+        Contact[] temp = new Contact[this.contacts.length];
+
+            for (int i = 0; i < this.contacts.length; i++) {
+
+                if (this.contacts[i] == null) {
+                    i++;
+                }
+
+                temp[j] = this.contacts[i];
+
+                j++;
+            }
+
+            this.contacts = temp;
+        }
+
     private String contactToJson(Contact contact) {
 
         if (contact == null) {
