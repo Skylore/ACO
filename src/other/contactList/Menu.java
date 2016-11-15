@@ -49,7 +49,7 @@ public class Menu {
 
                 System.out.println("Input id of contact which you would to remove: ");
                 list.removeContact(new Scanner(System.in).nextInt());
-            } else if (choose == 6) {
+            } else if (choose == 7) {
 
                 break;
             } else {
