@@ -53,7 +53,7 @@ public class Menu {
                 "if you would to add contact - input 1\n" +
                 "if you would to show all contacts - input 2\n" +
                 "if you would to show details - input 3\n" +
-                "if you would to show json version - in put 4\n" +
+                "if you would to show json version - input 4\n" +
                 "if you would to override contact, input 5\n" +
                 "if you to exit - input 6");
     }
