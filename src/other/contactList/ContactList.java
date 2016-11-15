@@ -94,7 +94,7 @@ public class ContactList {
             return "";
         }
 
-        return String.format("{\n\"name\" : \"%s\",\n\"phone number\" : \"%s\",\n\"id\" : %d, \n\"operator\" : \"%s\"}",
+        return String.format("{\"name\":\"%s\",\"phone number\":\"%s\",\n\"id\":%d,\"operator\":\"%s\"}",
                 contact.name, contact.phone, contact.id + 1, contact.operator);
     }
 
@@ -106,6 +106,10 @@ public class ContactList {
             res += contactToJson(this.contacts[i]) + ",\n";
         }
 
-        return "{\n \"contactList\" : [\n" +  res.substring(0, res.length() - 2) + "\n]\n}";
+        return "{\"contactList\":[" +  res.substring(0, res.length() - 2) + "\n]\n}";
+    }
+
+    public Contact[] getContacts() {
+        return this.contacts;
     }
 }
