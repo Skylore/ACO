@@ -23,7 +23,7 @@ public class ContactList {
 
         contact.id = findLastContact();
 
-        if (this.contacts.length <= contact.id|| this.contacts[contact.id] != null) {
+        if (this.contacts.length <= contact.id || this.contacts[contact.id] != null) {
             this.contacts = Arrays.copyOf(this.contacts, this.contacts.length * 2);
         }
 
