@@ -19,12 +19,14 @@ public class ContactList {
         res[res.length - 1] = contact;
         contact.id ++;
 
+        System.out.println(contact.id);
+
         return this.contacts = res;
     }
 
     public String showDetails(int index) {
 
-        if (this.contacts.length < index - 1 || index < 0) {
+        if (this.contacts.length - 1 < index || index <= 0) {
             return "That contact does'n exist";
         }
         return String.format("name - %s \nphone number - %s\nid - %d",
@@ -44,6 +46,16 @@ public class ContactList {
         }
 
         return res;
+    }
+
+    public void overrideContact(int index, String name, String phone) {
+
+        if (index <= 0 || index - 1 > this.contacts.length ) {
+            return;
+        }
+
+        this.contacts[index].name = name;
+        this.contacts[index].phone = phone;
     }
 
     private String contactToJson(Contact contact) {
