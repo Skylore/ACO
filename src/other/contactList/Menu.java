@@ -18,6 +18,8 @@ public class Menu {
                 contact.name = new Scanner(System.in).nextLine();
                 System.out.println("Input phone number: ");
                 contact.phone = new Scanner(System.in).nextLine();
+                System.out.println("Input operator of contact: ");
+                contact.operator = new Scanner(System.in).next();
 
                 list.addContact(contact);
 
