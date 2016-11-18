@@ -47,9 +47,15 @@ public class Menu {
                 list.overrideContact(index, name, phone);
             } else if (choose == 6) {
 
+                System.out.println("Input desired value: ");
+                String key = new Scanner(System.in).next();
+
+                System.out.println(list.search(key));
+            } else if (choose == 7) {
+
                 System.out.println("Input id of contact which you would to remove: ");
                 list.removeContact(new Scanner(System.in).nextInt());
-            } else if (choose == 7) {
+            } else if (choose == 8) {
 
                 break;
             } else {
@@ -66,7 +72,8 @@ public class Menu {
                 "if you would to show details - input 3\n" +
                 "if you would to show json version - input 4\n" +
                 "if you would to override contact, input 5\n" +
-                "if you would to remove contact, input 6\n" +
-                "if you to exit - input 7");
+                "if you would to find contact, input 6\n" +
+                "if you would to remove contact, input 7\n" +
+                "if you to exit - input 8");
     }
 }

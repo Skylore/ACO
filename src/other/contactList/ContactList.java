@@ -19,7 +19,27 @@ public class ContactList {
         return res;
     }
 
+    private boolean contains(String key) {
+
+        if (this.contacts[0] == null) {
+            return false;
+        }
+
+        for (int i = 0; i < this.contacts.length; i++) {
+            if (this.contacts[i].name.equals(key)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public void addContact(Contact contact) {
+
+        if (contains(contact.name)) {
+            System.out.println("That contact is already exist");
+            return;
+        }
 
         contact.id = findLastContact();
 
@@ -53,6 +73,29 @@ public class ContactList {
         return res;
     }
 
+    public String search(String key) {
+        if (key == null) {
+            System.out.println("Invalid key");;
+        }
+
+        String res = "";
+
+        for (int i = 0; i < this.contacts.length; i++) {
+            if (this.contacts[i].name.equals(key)) {
+                res += showDetails(i + 1) + "\n";
+            }
+            if (this.contacts[i].phone.equals(key)) {
+                res += showDetails(i + 1) + "\n";
+            }
+        }
+
+        if (res.length() == 0) {
+            res = "Contact not found";
+        }
+
+        return res;
+    }
+
     public void overrideContact(int index, String name, String phone) {
 
         if (index <= 0 || index - 1 > this.contacts.length ) {
@@ -74,19 +117,18 @@ public class ContactList {
 
         Contact[] temp = new Contact[this.contacts.length];
 
-            for (int i = 0; i < this.contacts.length; i++) {
+        for (int i = 0; i < this.contacts.length; i++) {
 
-                if (this.contacts[i] == null) {
-                    i++;
-                }
-
-                temp[j] = this.contacts[i];
-
-                j++;
+            if (this.contacts[i] == null) {
+                i++;
             }
 
-            this.contacts = temp;
+            temp[j] = this.contacts[i];
+            j++;
         }
+
+        this.contacts = temp;
+    }
 
     private String contactToJson(Contact contact) {
 
@@ -94,7 +136,7 @@ public class ContactList {
             return "";
         }
 
-        return String.format("{\"name\":\"%s\",\"phone number\":\"%s\",\n\"id\":%d,\"operator\":\"%s\"}",
+        return String.format("{\"name\":\"%s\",\"phone number\":\"%s\",\"id\":%d,\"operator\":\"%s\"}",
                 contact.name, contact.phone, contact.id + 1, contact.operator);
     }
 
@@ -103,10 +145,10 @@ public class ContactList {
         String res = "";
 
         for (int i = 0; i < findLastContact(); i++) {
-            res += contactToJson(this.contacts[i]) + ",\n";
+            res += contactToJson(this.contacts[i]) + ",";
         }
 
-        return "{\"contactList\":[" +  res.substring(0, res.length() - 2) + "\n]\n}";
+        return "{\"contactList\":[" +  res.substring(0, res.length() - 1) + "]}";
     }
 
     public Contact[] getContacts() {
