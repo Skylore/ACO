@@ -1,0 +1,44 @@
+import models.Node;
+import models.Queue;
+
+public class LinkedQueue implements Queue {
+
+    private Node tail;
+
+    @Override
+    public void enqueue(Object object) {
+
+        if (object == null) {
+            return;
+        }
+
+        if (tail == null) {
+            tail = new Node(object, null);
+
+        } else {
+            tail = new Node(object, tail);
+        }
+    }
+
+    @Override
+    public Object dequeue() {
+
+        if (tail.next == null) {
+            Object res = tail.val;
+            tail = null;
+            return res;
+        }
+
+        tail = tail.next;
+        return dequeue();
+    }
+
+    @Override
+    public String peek() {
+        return null;
+    }
+
+    public Node getTail() {
+        return tail;
+    }
+}
