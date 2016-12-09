@@ -1,0 +1,37 @@
+public class TestLinkedQueue {
+
+    public static void main(String[] args) {
+
+        System.out.println("testEnqueue() --> " + testEnqueue() +
+                           "\ntestDequeue() --> " + testDequeue());
+    }
+
+    private static boolean testEnqueue() {
+
+        LinkedQueue queue = new LinkedQueue();
+
+        queue.enqueue("val1");
+        queue.enqueue("val2");
+        queue.enqueue("val3");
+
+        boolean res = queue.getTail().val.equals("val3");
+        boolean res1 = queue.getTail().next.val.equals("val2");
+        boolean res2 = queue.getTail().next.next.val.equals("val1");
+
+        return res && res1 && res2;
+    }
+
+    private static boolean testDequeue() {
+
+        LinkedQueue queue = new LinkedQueue();
+
+        queue.enqueue("val1");
+        queue.enqueue("val2");
+        queue.enqueue("val3");
+
+        Object deq = queue.dequeue();
+
+        return deq.equals("val1") && queue.getTail().val.equals("val2") &&
+                queue.getTail().next.val.equals("val3");
+    }
+}
